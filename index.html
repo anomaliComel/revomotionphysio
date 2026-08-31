@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revomotion Physiotherapy & Rehab Centre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #181b22;
+            --bg-card-hover: #212630;
+            --primary-maroon: #7a1c31;
+            --primary-maroon-hover: #9c2540;
+            --accent-gold: #d4af37;
+            --text-light: #f1f3f6;
+            --text-muted: #9aa0a6;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-maroon), #581222);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(122, 28, 49, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-maroon-hover), var(--primary-maroon));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 28, 49, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .section-padding {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h4 {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(15, 17, 21, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 8%;
+            background: rgba(15, 17, 21, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .hero {
+            min-height: 100vh;
+            padding: 140px 8% 80px;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 80% 20%, rgba(122, 28, 49, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(45deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- SPLASH SCREEN ANIMATION --- */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background-color: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+
+        .splash-logo {
+            height: 120px;
+            border-radius: 16px;
+            animation: popOut 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes popOut {
+            0% { transform: scale(0.3); opacity: 0; }
+            60% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- SCROLL REVEAL ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- AI ASSISTANT SECTION --- */
+        .ai-section {
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-card));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ai-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .ai-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(15, 17, 21, 0.6);
+            border: 1px solid var(--border-color);
+            border-top: 2px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        .ai-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .ai-header h3 {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .ai-header h3 i {
+            color: var(--accent-gold);
+        }
+
+        .ai-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .ai-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .ai-input-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 15px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: var(--transition);
+        }
+
+        .ai-input-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .ai-btn-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, #111, #222);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-ai:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .ai-result-box {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(122, 28, 49, 0.1);
+            border-left: 4px solid var(--primary-maroon);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .ai-result-box.error {
+            background: rgba(255, 0, 0, 0.1);
+            border-left-color: #ff4444;
+        }
+
+        .ai-result-box p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .ai-result-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .ai-result-box strong {
+            color: var(--accent-gold);
+        }
+
+        .ai-select, .ai-text-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 15px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .ai-select:focus, .ai-text-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .ai-select option {
+            background: var(--bg-card);
+            color: var(--text-light);
+        }
+
+        .loader {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .loader i {
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- END AI SECTION --- */
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            width: calc((100% - 90px) / 4); 
+        }
+
+        .service-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(122, 28, 49, 0.2);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .facility-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .feature-item i {
+            color: var(--accent-gold);
+        }
+
+        .floor-plan-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .floor-plan-card img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .floor-plan-tag {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            background: rgba(15, 17, 21, 0.8);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            backdrop-filter: blur(5px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 240px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            transform: translateY(10px);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay h4 {
+            transform: translateY(0);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            padding: 35px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .review-card:hover {
+            border-color: rgba(122, 28, 49, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reviewer-info img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .reviewer-info h4 {
+            font-size: 1rem;
+        }
+
+        .reviewer-info span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .info-item i {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .info-item:hover i {
+            background: var(--primary-maroon);
+            color: #fff;
+            border-color: var(--primary-maroon);
+        }
+
+        .info-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(85%);
+        }
+
+        footer {
+            background: #090a0d;
+            padding: 60px 8% 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            max-width: 300px;
+        }
+
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        
+        .footer-logo p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-socials a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .footer-socials a:hover {
+            background: var(--primary-maroon);
+            color: #fff;
+            transform: translateY(-5px);
+            border-color: var(--primary-maroon);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .map-wrapper { min-height: 300px; }
+            .service-card { width: calc((100% - 30px) / 2); } 
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 70px 6%; }
+            .navbar { padding: 15px 6%; }
+            .hamburger { display: block; }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 0;
+                text-align: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                border-bottom: none;
+                transition: max-height 0.3s ease-out, border 0.3s ease;
+            }
+            
+            .nav-links.active {
+                max-height: 300px;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .nav-links a {
+                padding: 15px 0;
+                display: block;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.03);
+            }
+            
+            .nav-links a::after { display: none; }
+            
+            .hero-container, .about-container { grid-template-columns: 1fr; text-align: center; gap: 40px;}
+            .hero { padding-top: 120px; }
+            .hero-buttons { justify-content: center; }
+            .hero-image img { max-width: 80%; }
+            .facility-features { text-align: left; }
+            .service-card { width: 100%; }
+            
+            .footer-content { flex-direction: column; text-align: center; align-items: center; }
+            .footer-logo { margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+            .footer-socials { justify-content: center; }
+            .ai-container { padding: 25px; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; }
+            .facility-features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SPLASH SCREEN OVERLAY -->
+    <div id="splash-screen">
+        <img src="revomotion logo.jpeg" alt="Revomotion Physiotherapy Logo" class="splash-logo">
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <img src="revomotion logo.jpeg" alt="Revomotion Physiotherapy Logo">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#ai-assistant">AI Triage</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">Facility</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#ai-routine">Home Exercises</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-container reveal">
+            <div class="hero-content">
+                <h1>Restore Your Mobility. <br><span>Reclaim Your Life.</span></h1>
+                <p>Experience advanced physiotherapy and personalized rehabilitation programs designed to help you recover faster and move without pain.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/60107735568?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Book Appointment <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="#ai-assistant" class="btn btn-outline">
+                        Check Symptoms ✨
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="physiotherpist.jpg" alt="Physiotherapist treating a patient">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding ai-section" id="ai-assistant">
+        <div class="ai-container reveal">
+            <div class="ai-header">
+                <h3><i class="fa-solid fa-robot"></i> AI Triage Assistant</h3>
+                <p>Not sure what kind of physiotherapy you need? Describe your pain, injury, or discomfort below, and our Gemini-powered AI will suggest the most relevant service for you.</p>
+            </div>
+            <div class="ai-input-group">
+                <textarea id="aiSymptomInput" placeholder="E.g., I hurt my knee while playing football last weekend and it swells up when I walk..."></textarea>
+                <div class="ai-btn-container">
+                    <button id="aiAnalyzeBtn" class="btn btn-ai">
+                        ✨ Analyze My Symptoms
+                    </button>
+                </div>
+            </div>
+            
+            <div id="aiLoader" class="loader">
+                <i class="fa-solid fa-circle-notch"></i> Analyzing your symptoms...
+            </div>
+            
+            <div id="aiResultBox" class="ai-result-box">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="services">
+        <div class="section-title reveal">
+            <h4>What We Offer</h4>
+            <h2>Specialized Treatments</h2>
+        </div>
+        <div class="services-grid reveal">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-person-running"></i></div>
+                <h3>Sports Rehabilitation</h3>
+                <p>Targeted therapies to heal sports injuries quickly and prevent future re-injury, getting you back in the game safely.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-bone"></i></div>
+                <h3>Orthopedic Care</h3>
+                <p>Comprehensive care for musculoskeletal conditions, including back pain, neck pain, arthritis, and joint issues.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-child"></i></div>
+                <h3>Pediatric Care</h3>
+                <p>Gentle, engaging physiotherapy interventions for children facing developmental or physical challenges.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-bed-pulse"></i></div>
+                <h3>Post-Surgery Rehab</h3>
+                <p>Guided, step-by-step recovery programs tailored to your surgical procedure to restore mobility and strength.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-user-nurse"></i></div>
+                <h3>Geriatric Wellness</h3>
+                <p>Programs designed to maintain balance, mobility, and independence for seniors, reducing the risk of falls.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+                <h3>Neurological Physio</h3>
+                <p>Specialized treatments for stroke recovery, Parkinson's, and other neurological conditions to improve functional independence.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: var(--bg-card);" id="about">
+        <div class="about-container reveal">
+            <div class="floor-plan-card">
+                <span class="floor-plan-tag">Premium Facility</span>
+                <img src="Floor Plan Revomotion.jpg" alt="Revomotion Clinic Floor Plan">
+            </div>
+            <div class="about-text">
+                <div class="section-title" style="text-align: left; margin-bottom: 20px;">
+                    <h4>About Our Clinic</h4>
+                    <h2>State-of-the-Art Rehabilitation</h2>
+                </div>
+                <p>At Revomotion, we believe in a holistic approach to healing. Our clinic is equipped with the latest technology in physical therapy, ensuring you receive the most effective treatments available.</p>
+                <p>Our spacious, modern layout is designed to foster a comfortable and motivating environment for your recovery journey.</p>
+                
+                <div class="facility-features">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Advanced Equipment
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Private Treatment Rooms
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Open Gym Area
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Dedicated Pediatric Zone
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Hydrotherapy Pool
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Wheelchair Accessible
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="team">
+        <div class="section-title reveal">
+            <h4>Meet The Experts</h4>
+            <h2>The Revomotion Physiotherapy & Rehab Centre Team</h2>
+        </div>
+        <div class="reveal" style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid var(--border-color);">
+            <img src="team photo 2.jpg" alt="Revomotion Physiotherapy Team" style="width: 100%; display: block; height: auto;">
+        </div>
+    </section>
+
+    <section class="section-padding" id="gallery">
+        <div class="section-title reveal">
+            <h4>Inside Revomotion</h4>
+            <h2>Our Clinic Gallery</h2>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Therapy Session">
+                <div class="gallery-overlay">
+                    <h4>Guided Therapy</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Stretching Exercises">
+                <div class="gallery-overlay">
+                    <h4>Mobility Work</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Modern Equipment">
+                <div class="gallery-overlay">
+                    <h4>Modern Equipment</h4>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Consultation">
+                <div class="gallery-overlay">
+                    <h4>Expert Consultation</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="ai-routine">
+        <div class="section-title reveal">
+            <h4>At-Home Care</h4>
+            <h2>✨ AI Mobility Routine Generator</h2>
+        </div>
+        <div class="contact-container reveal">
+            <div class="ai-input-group" style="background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color);">
+                <p style="margin-bottom: 25px; color: var(--text-muted);">Experiencing stiffness while waiting for your appointment? Select a target area to receive a safe, personalized, AI-generated gentle stretching routine.</p>
+                
+                <label for="bodyPartSelect" style="color: var(--accent-gold); margin-bottom: 8px; display: block; font-size: 0.9rem;">Select Area of Discomfort:</label>
+                <select id="bodyPartSelect" class="ai-select">
+                    <option value="Lower Back">Lower Back</option>
+                    <option value="Neck & Shoulders">Neck & Shoulders</option>
+                    <option value="Hips & Glutes">Hips & Glutes</option>
+                    <option value="Knees">Knees</option>
+                    <option value="Ankles & Calves">Ankles & Calves</option>
+                    <option value="Wrists & Hands">Wrists & Hands</option>
+                </select>
+
+                <label for="routineGoalInput" style="color: var(--accent-gold); margin-bottom: 8px; display: block; font-size: 0.9rem;">Specific Goal or Issue (Optional):</label>
+                <input type="text" id="routineGoalInput" class="ai-text-input" placeholder="E.g., Stiff from sitting at my desk all day">
+                
+                <button id="generateRoutineBtn" class="btn btn-ai" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    ✨ Generate My Routine
+                </button>
+            </div>
+            
+            <div style="background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); display: flex; flex-direction: column;">
+                <div id="routineLoader" class="loader" style="margin: auto; padding: 40px;">
+                    <i class="fa-solid fa-circle-notch"></i> Crafting your routine...
+                </div>
+                <div id="routineResultBox" class="ai-result-box" style="display: block; background: transparent; border: none; margin: 0; padding: 0;">
+                    <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+                        <i class="fa-solid fa-dumbbell" style="font-size: 3rem; opacity: 0.2; margin-bottom: 20px; display: block;"></i>
+                        Your personalized AI-generated routine will appear here.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: var(--bg-card);" id="reviews">
+        <div class="section-title reveal">
+            <h4>Testimonials</h4>
+            <h2>Patient Success Stories</h2>
+        </div>
+        <div class="reviews-grid reveal">
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"After my ACL surgery, the team at Revomotion guided me through every step of recovery. Six months later, I'm back to playing football better than ever. Their expertise is unmatched."</p>
+                <div class="reviewer-info">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Mark T.">
+                    <div>
+                        <h4>Mark T.</h4>
+                        <span>Athlete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"I suffered from chronic lower back pain for years. The personalized care plan and modern facilities here truly changed my life. I can finally pick up my grandkids without wincing."</p>
+                <div class="reviewer-info">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah J.">
+                    <div>
+                        <h4>Sarah J.</h4>
+                        <span>Teacher</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p>"A wonderful clinic with a truly compassionate staff. The facilities are pristine and the therapists take the time to explain every movement. Highly recommended for any rehabilitation needs."</p>
+                <div class="reviewer-info">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="David L.">
+                    <div>
+                        <h4>David L.</h4>
+                        <span>Architect</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="contact">
+        <div class="section-title reveal">
+            <h4>Get In Touch</h4>
+            <h2>Visit Our Clinic</h2>
+        </div>
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Universiti Kuala Lumpur Royal College of Medicine Perak (UniKL RCMP),<br>Ipoh, Perak, Malaysia</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+6010-7735568</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>hello@revomotion.com<br>appointments@revomotion.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <h4>Operating Hours</h4>
+                        <p>Mon - Sun: 9:00 AM - 6:00 PM<br>6:00 PM - 10:00 PM (By Appointment Only)<br>Closed on Public Holidays</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://maps.google.com/maps?q=UniKL+RCMP+Ipoh+Perak&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#" class="logo">
+                    <img src="revomotion logo.jpeg" alt="Revomotion Physiotherapy Logo">
+                </a>
+                <p>Empowering your movement and transforming your lifestyle through expert care and dedication.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Revomotion Physiotherapy & Rehab Centre. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Splash Screen Logic ---
+            const splashScreen = document.getElementById('splash-screen');
+            setTimeout(() => {
+                splashScreen.style.opacity = '0';
+                splashScreen.style.visibility = 'hidden';
+            }, 1500);
+
+            // --- UI Interaction Scripts ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                if (navLinks.classList.contains('active')) {
+                    hamburger.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                } else {
+                    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                }
+            });
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                });
+            });
+
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                let current = '';
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href').includes(current)) {
+                        a.classList.add('active');
+                    }
+                });
+            });
+
+            // --- Gemini API Integration ---
+            const apiKey = ""; // Exec environment provides key at runtime
+            
+            // AI Triage Elements
+            const analyzeBtn = document.getElementById('aiAnalyzeBtn');
+            const symptomInput = document.getElementById('aiSymptomInput');
+            const resultBox = document.getElementById('aiResultBox');
+            const loader = document.getElementById('aiLoader');
+
+            // AI Routine Elements
+            const generateRoutineBtn = document.getElementById('generateRoutineBtn');
+            const bodyPartSelect = document.getElementById('bodyPartSelect');
+            const routineGoalInput = document.getElementById('routineGoalInput');
+            const routineResultBox = document.getElementById('routineResultBox');
+            const routineLoader = document.getElementById('routineLoader');
+
+            // --- Scroll Reveal Animations ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, 
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            const triageSystemPrompt = `
+                You are a helpful, professional AI triage assistant for Revomotion Physiotherapy clinic.
+                The user will describe their physical pain, injury, or discomfort.
+                Your job is to:
+                1. Briefly express empathy for their discomfort.
+                2. Explicitly state a short disclaimer that you are an AI and this is not a medical diagnosis.
+                3. Based on their description, recommend EXACTLY ONE of our clinic's specific services that best fits their needs:
+                   [Sports Rehabilitation, Orthopedic Care, Post-Surgery Rehab, Neurological Physio, Pediatric Care, Geriatric Wellness].
+                4. Give a 1-sentence explanation of how that specific service at Revomotion can help them.
+                
+                Format your output using basic HTML tags like <p> and <strong>. Do NOT use markdown code blocks. Keep the total response under 4 paragraphs.
+            `;
+
+            const routineSystemPrompt = `
+                You are a senior physiotherapist at Revomotion Physiotherapy. 
+                The user wants a safe, gentle, at-home stretching or mobility routine for a specific body part.
+                
+                Your job is to:
+                1. Provide a STRONG disclaimer at the top stating they should stop immediately if they feel sharp pain and that this does not replace professional medical advice.
+                2. Generate exactly 3 simple, safe exercises tailored to their input.
+                3. For each exercise, provide: The Name, a 1-sentence simple instruction, and how long to hold / how many reps.
+                
+                Format using clean HTML: use <h3> for the title, <ul> and <li> for the exercises, and <strong> for emphasis. Make your tone encouraging and professional. Do NOT use markdown code blocks.
+            `;
+
+            async function callGeminiAPI(text, systemPromptText, retries = 5) {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [{ parts: [{ text: text }] }],
+                    systemInstruction: { parts: [{ text: systemPromptText }] }
+                };
+
+                const delays = [1000, 2000, 4000, 8000, 16000];
+
+                for (let i = 0; i < retries; i++) {
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        return data.candidates[0].content.parts[0].text;
+                    } catch (error) {
+                        if (i === retries - 1) throw error;
+                        await new Promise(resolve => setTimeout(resolve, delays[i]));
+                    }
+                }
+            }
+
+            analyzeBtn.addEventListener('click', async () => {
+                const userText = symptomInput.value.trim();
+                
+                if (!userText) {
+                    resultBox.innerHTML = "<p>Please describe your symptoms first so I can assist you.</p>";
+                    resultBox.style.display = 'block';
+                    resultBox.className = 'ai-result-box error';
+                    return;
+                }
+
+                resultBox.style.display = 'none';
+                resultBox.className = 'ai-result-box';
+                loader.style.display = 'block';
+                analyzeBtn.disabled = true;
+                analyzeBtn.innerHTML = "Processing...";
+
+                try {
+                    const aiResponseHTML = await callGeminiAPI(userText, triageSystemPrompt);
+                    resultBox.innerHTML = aiResponseHTML;
+                    resultBox.style.display = 'block';
+                } catch (error) {
+                    resultBox.innerHTML = "<p><strong>Connection Error:</strong> I'm having trouble connecting to my knowledge base right now. Please browse our Services section below or contact the clinic directly.</p>";
+                    resultBox.style.display = 'block';
+                    resultBox.className = 'ai-result-box error';
+                } finally {
+                    loader.style.display = 'none';
+                    analyzeBtn.disabled = false;
+                    analyzeBtn.innerHTML = "✨ Analyze My Symptoms";
+                }
+            });
+
+            generateRoutineBtn.addEventListener('click', async () => {
+                const bodyPart = bodyPartSelect.value;
+                const goal = routineGoalInput.value.trim() || "General stiffness and mobility";
+                const userText = `Target Area: ${bodyPart}\nSpecific Goal/Issue: ${goal}`;
+
+                routineResultBox.style.display = 'none';
+                routineResultBox.className = 'ai-result-box';
+                routineLoader.style.display = 'block';
+                generateRoutineBtn.disabled = true;
+                generateRoutineBtn.innerHTML = "Generating...";
+
+                try {
+                    const aiResponseHTML = await callGeminiAPI(userText, routineSystemPrompt);
+                    routineResultBox.innerHTML = aiResponseHTML;
+                    routineResultBox.style.display = 'block';
+                    
+                    routineResultBox.style.background = 'rgba(122, 28, 49, 0.1)';
+                    routineResultBox.style.borderLeft = '4px solid var(--primary-maroon)';
+                    routineResultBox.style.padding = '20px';
+                } catch (error) {
+                    routineResultBox.innerHTML = "<p><strong>Connection Error:</strong> Could not generate a routine right now. Please try again later.</p>";
+                    routineResultBox.style.display = 'block';
+                    routineResultBox.className = 'ai-result-box error';
+                } finally {
+                    routineLoader.style.display = 'none';
+                    generateRoutineBtn.disabled = false;
+                    generateRoutineBtn.innerHTML = "✨ Generate My Routine";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
